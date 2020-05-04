@@ -10,6 +10,28 @@
   class="uk-container uk-margin-small-left uk-child-width-4-5@s uk-grid-match"
   uk-grid
 >
+  <% if(newPost !== 'undefined'){%>
+  <div>
+    <div
+      class="uk-card uk-card-default uk-card-large uk-card-body uk-width-4-5@m"
+    >
+      <div class="uk-card-badge uk-label" style="background-color: red;">
+        new
+      </div>
+      <h3 class="uk-card-title"><%- newPost.title %></h3>
+      <div class="fr-view" id="text-content">
+        <%- newPost.content %>
+      </div>
+      <a
+        class="uk-link-heading"
+        style="color: green; font-size: x-large;"
+        href="/view-post/<%- newPost._id %>"
+        >Đọc tiếp......</a
+      >
+    </div>
+  </div>
+  <%} %>
+
   <!--  -->
   <% posts.forEach(p=>{%>
   <div
