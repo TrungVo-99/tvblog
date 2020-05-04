@@ -7,9 +7,10 @@
 <!-- <div class="uk-container"></div> -->
 
 <div
-  class=" uk-container uk-margin-small-left uk-child-width-4-5@s uk-grid-match"
+  class="uk-container uk-margin-small-left uk-child-width-4-5@s uk-grid-match"
   uk-grid
 >
+  <% if(newPost != undefined){%>
   <div>
     <div
       class="uk-card uk-card-default uk-card-large uk-card-body uk-width-4-5@m"
@@ -23,12 +24,14 @@
       </div>
       <a
         class="uk-link-heading"
-        style=" color: green;font-size:x-large;"
+        style="color: green; font-size: x-large;"
         href="/view-post/<%- newPost._id %>"
         >Đọc tiếp......</a
       >
     </div>
   </div>
+  <%} %>
+
   <!--  -->
   <% posts.forEach(p=>{%>
   <div
@@ -44,7 +47,7 @@
     </p>
     <a
       class="uk-link-heading"
-      style=" color: green;font-size:x-large;"
+      style="color: green; font-size: x-large;"
       href="/view-post/<%- newPost._id %>"
       >Đọc tiếp......</a
     >
@@ -74,7 +77,7 @@
     message: "<%- msg %>",
     status: "warning",
     pos: "top-center",
-    timeout: 3000
+    timeout: 3000,
   });
 </script>
 <%}) %>
@@ -85,7 +88,7 @@
     message: "<%- msg %>",
     status: "warning",
     pos: "top-center",
-    timeout: 3000
+    timeout: 3000,
   });
 </script>
 <%}) %>
