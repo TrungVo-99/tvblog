@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 7000);
 
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -21,10 +21,10 @@ mongoose
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   })
   .then(console.log("connect succeessfully"))
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
 
@@ -46,7 +46,7 @@ app.use(
     secret: "trungvo",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 180 * 60 }
+    cookie: { maxAge: 1000 * 180 * 60 },
   })
 );
 app.use(flash());
@@ -59,7 +59,7 @@ const clientRoute = require("./routes/client.route");
 const adminRoute = require("./routes/admin.route");
 const userRoute = require("./routes/user.route");
 
-const midlewareRequireRole = role => {
+const midlewareRequireRole = (role) => {
   return (req, res, next) => {
     if (req.user && req.user.role === role) {
       next();
