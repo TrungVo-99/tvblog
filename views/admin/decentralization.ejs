@@ -1,0 +1,135 @@
+<h1>Wellcome to decentralization page</h1>
+<div class="container-fluid">
+  <table class="table table-bordered table-dark" style="width: 100%;">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 10%;">#</th>
+        <th scope="col" style="width: 25%;">Decentralization</th>
+        <th style="text-align: center; width: 25%;" colspan="2">Role</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">User</th>
+        <th scope="col">Admin</th>
+        <th scope="col">All Control</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.length > 0 && data.forEach(user=>{%>
+      <!--  -->
+      <% if(user.role === 'admin'){%>
+      <!-- admin -->
+      <tr>
+        <th scope="row">1</th>
+        <td><%- user.username %></td>
+        <td></td>
+        <td>
+          <i
+            style="font-size: 24px;"
+            class="fa fa-check"
+            aria-hidden="true"
+          ></i>
+        </td>
+
+        <td style="display: flex;">
+          <!-- set admin -->
+          <form
+            action="/admin/decentralization/<%- user._id %>"
+            method="post"
+            style="margin-right: 20px;"
+          >
+            <button
+              disabled
+              style="background-color:green;"
+              type="submit"
+              class="btn btn-secondary"
+              data-toggle="popover"
+              data-content="Set to admin."
+            >
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </button>
+          </form>
+          <!-- /set admin -->
+          <!-- set to user -->
+          <form action="/admin/decentralization/<%- user._id %>" method="post">
+            <button
+              type="submit"
+              class="btn btn-secondary"
+              data-toggle="popover"
+              data-content="Set to user."
+            >
+              <i class="fa fa-user-o" aria-hidden="true"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+      <%}else{%>
+      <!-- user -->
+      <tr>
+        <th scope="row">1</th>
+        <td><%- user.username %></td>
+        <td>
+          <i
+            style="font-size: 24px;"
+            class="fa fa-check"
+            aria-hidden="true"
+          ></i>
+        </td>
+        <td></td>
+
+        <td style="display: flex;">
+          <!-- set admin -->
+          <form
+            action="/admin/decentralization/<%- user._id %>"
+            method="post"
+            style="margin-right: 20px;"
+          >
+            <button
+              type="submit"
+              class="btn btn-secondary"
+              data-toggle="popover"
+              data-content="Set to admin."
+            >
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </button>
+          </form>
+          <!-- /set admin -->
+          <!-- set to user -->
+          <form action=" /admin/decentralization/<%- user._id %>" method="post">
+            <button
+              style="background-color:green;"
+              disabled
+              type="submit"
+              class="btn btn-secondary"
+              data-toggle="popover"
+              data-content="Set to user."
+            >
+              <i class="fa fa-user-o" aria-hidden="true"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+
+      <%} %>
+      <!--  -->
+      <%}) %>
+
+      <!-- user -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  $(document).ready(() => {
+    $(function() {
+      $('[data-toggle="popover"]').popover({
+        placement: "top",
+        trigger: "hover"
+      });
+    });
+  });
+</script>

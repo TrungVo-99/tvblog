@@ -1,0 +1,123 @@
+body{
+    margin: 0;
+}
+.container-fluid{
+    width: 100%;
+    height: 100%;
+}
+
+#FE-img{
+    margin: auto;
+    /* height: 300px; */
+    width: 100%;
+    text-align: center;
+    background-color: 	#808080;
+}
+
+#ciclre{
+    margin: auto;
+    padding-top: 50px;
+    /* padding-bottom: 50px; */
+    border-radius: 50%;
+}
+
+#left{
+    height: 100%;
+    width: 20%;
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+#right{
+    margin-left: 20%;
+    /* margin-right: 20%; */
+    transition: right 0.5s;
+}
+
+
+#menu-fixed{
+    z-index: 3;
+    position: fixed;
+    width: 80%;
+    top: 0;
+    /* right: 0; */
+    transition: ease 0.5s right;
+}
+
+.right{
+    width: 300px;
+    height: 100px;
+    background-color: darkviolet;
+}
+
+.submenu{
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.submenu li a{
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    display: block;
+    color: white;
+    padding: 20px 30px;
+    text-decoration: none;
+    
+}
+
+.submenu li a:hover{
+    background-color: #333 ;
+    color: white;
+}
+
+/* .submenu li a:active {
+    background-color: firebrick;
+} */
+
+/* BE */
+
+.side-bar-BE{
+    height: 100%;
+    position: fixed;
+    width: 0;
+    /* z-index: 1; */
+    top: 0;
+    left: 0;
+    background-color: #1a1a1a;
+    /* transition: ease 0.5s right; */
+    overflow-x: hidden;
+
+}
+#sub-right-menu{
+    transform: width 2s ease;
+
+    /* margin-top: 3%;
+    height: 100%;
+    width: 20%;
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0;
+    right: 0;
+    overflow-x: hidden; */
+}
+
+#BE-img{
+    margin: auto;
+    /* height: 300px; */
+    width: 100%;
+    text-align: center;
+    background-color: 	#808080;
+}
+
+#BE-ciclre{
+    margin: auto;
+    padding-top: 50px;
+    /* padding-bottom: 50px; */
+    border-radius: 50%;
+}

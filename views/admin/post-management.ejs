@@ -1,0 +1,176 @@
+<h1>POST MANAGEMENT PAGE</h1>
+
+<div>
+  <% if(errMsg.length > 0){%> <% errMsg.forEach(msg=>{%>
+  <div class="alert alert-warning" role="alert">
+    <%-msg%>
+  </div>
+  <%}) %> <%} %>
+  <!--  -->
+  <% if(successMsg.length > 0){%> <% successMsg.forEach(msg=>{%>
+  <div class="alert alert-success" role="alert">
+    <%-msg%>
+  </div>
+  <%}) %> <%} %>
+</div>
+
+<div class="conatiner">
+  <table class="table  table-dark" style="width: 100%;">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 20%;">#id</th>
+        <th scope="col" style="width: 30%;">Title</th>
+        <th scope="col" style="width: 20%;">Date upload</th>
+        <th scope="col" style="width: 20%;">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--  -->
+
+      <% data.forEach(posts=>{%>
+      <tr>
+        <th scope="row"><%-posts._id%></th>
+        <td class="limit-text">
+          <%- posts.title %>
+        </td>
+        <td><%- posts.dateUpload %></td>
+        <td>
+          <!-- action -->
+          <!-- view -->
+          <div class="edit-mini-bar" style="display: flex;">
+            <form
+              action="/admin/post-management/view/<%- posts._id %>"
+              method="get"
+            >
+              <button
+                class="btn btn-outline-dark btn-sm"
+                type="submit"
+                data-toggle="popover"
+                data-content="View"
+              >
+                <i
+                  class="fa fa-eye"
+                  aria-hidden="true"
+                  style="font-size: 24px; color: royalblue;"
+                ></i>
+              </button>
+            </form>
+
+            <!-- edit -->
+            <form
+              action="/admin/post-management/edit/<%- posts._id %>"
+              method="get"
+            >
+              <button
+                class="btn btn-outline-dark btn-sm"
+                data-toggle="popover"
+                data-content="Edit"
+              >
+                <i
+                  class="fa fa-pencil"
+                  aria-hidden="true"
+                  style="font-size: 24px; color: green;"
+                ></i>
+              </button>
+            </form>
+
+            <!-- delete -->
+            <form
+              action="/admin/post-management/delete/<%- posts._id %>"
+              method="post"
+            >
+              <button
+                class="btn btn-outline-dark btn-sm"
+                data-toggle="popover"
+                data-content="Delete"
+                type="submit"
+              >
+                <i
+                  class="fa fa-trash-o"
+                  aria-hidden="true"
+                  style="font-size: 24px; color: tomato;"
+                ></i>
+              </button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      <%}) %>
+      <!-- <tr>
+        <th scope="row">xdcfgvhjnklm</th>
+        <td class="limit-text">
+          Mark kasjhflkajgnkfjgvasdhbjnkfmdsfgvaddasdasdasbh lfkmadfasdgbhjk
+        </td>
+        <td>gbhnjdasdas</td>
+        <td>
+          <div class="edit-mini-bar">
+            <a data-toggle="popover" data-content="View">
+              <i
+                class="fa fa-eye"
+                aria-hidden="true"
+                style="font-size: 24px; color: royalblue;"
+              ></i>
+            </a>
+
+            <a data-toggle="popover" data-content="Edit">
+              <i
+                class="fa fa-pencil"
+                aria-hidden="true"
+                style="font-size: 24px; color: green;"
+              ></i>
+            </a>
+
+            <a data-toggle="popover" data-content="Delete">
+              <i
+                class="fa fa-trash-o"
+                aria-hidden="true"
+                style="font-size: 24px; color: tomato;"
+              ></i>
+            </a>
+          </div>
+        </td>
+      </tr> -->
+
+      <!--  -->
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .edit-mini-bar a {
+    border-right: 1px solid rgb(160, 153, 153);
+    padding-right: 10px;
+    margin-right: 10px;
+  }
+
+  .edit-mini-bar a:first-child {
+    border-left: 1px solid rgb(160, 153, 153);
+    padding-left: 10px;
+  }
+
+  .limit-text {
+    display: block;
+    text-overflow: ellipsis;
+    width: 85%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .edit-mini-bar button:hover {
+    cursor: default;
+    opacity: 1 !important;
+    box-shadow: none;
+    background-color: none;
+  }
+</style>
+
+<script>
+  $(document).ready(() => {
+    $(function() {
+      $('[data-toggle="popover"]').popover({
+        placement: "top",
+        trigger: "hover"
+      });
+    });
+  });
+</script>

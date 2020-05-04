@@ -1,0 +1,290 @@
+<div
+  class="container-fluid"
+  style="background-color: mintcream; min-height: 1500px;"
+>
+  <h3>YOUR CURRENT MENU BAR</h3>
+
+  <div class="container">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark"
+      style="z-index: 1;"
+    >
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if(data!== 'undefined'){%> <% data.forEach(item=>{%>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <%- item.name %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% item.children.forEach(topic=>{%>
+              <a class="dropdown-item" href="#"><%- topic.name %></a>
+              <%}) %>
+            </div>
+          </li>
+          <%}) %> <%} %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+  </div>
+
+  <!-- alert message -->
+  <div class="container-fluid" style="margin-top: 50px;">
+    <% if(errMsg.length > 0){%> <% errMsg.forEach(msg=>{%>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      style="position: relative; margin: auto ; width: 500px; text-align: center;"
+    >
+      <%- msg %>
+    </div>
+    <%}) %> <%} else if(successMsg.length>0){%> <% successMsg.forEach(msg=>{%>
+    <div
+      class="alert alert-success"
+      role="alert"
+      style="position: relative; margin: auto ; width: 500px; text-align: center;"
+    >
+      <%- msg %>
+    </div>
+    <%}) %> <%} %>
+
+    <h4 style="text-decoration: underline;">What would you want :</h4>
+    <h5>1. Category</h5>
+
+    <!-- Create form -->
+    <form
+      action="/admin/menu/add/category"
+      method="POST"
+      style="margin-top: 50px;"
+    >
+      <h5>ADD</h5>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Add new category</label>
+        <input
+          name="nameCategory"
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Entrer..."
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!-- Delete form -->
+    <form
+      action="/admin/menu/delete/category"
+      method="POST"
+      style="margin-top: 50px;"
+    >
+      <h5>Remove Category</h5>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Choise Category</label>
+        <select
+          class="form-control select-custom"
+          id="exampleFormControlSelect1"
+          name="selectCategoryId"
+        >
+          <% data.forEach(item=>{%>
+          <option value="<%- item._id %>"><%- item.name %></option>
+          <%}) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1"
+          >This category will be remove</label
+        >
+        <input
+          disabled
+          type="text"
+          class="form-control "
+          id="input-remove"
+          placeholder="Entrer 'OK'"
+        />
+      </div>
+      <div class="input-group-append">
+        <button type="button" class="btn btn-warning btn-check">Check</button>
+      </div>
+      <button type="submit" class="btn btn-primary btn-remove">Submit</button>
+    </form>
+
+    <!-- Edit form -->
+    <form
+      action="/admin/menu/update/category"
+      method="POST"
+      style="margin-top: 50px;"
+    >
+      <h5>Edit Category</h5>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Choise Item</label>
+        <select
+          multiple
+          class="form-control select-custom"
+          id="exampleFormControlSelect1"
+          name="selectCategoryId"
+        >
+          <% data.forEach(item=>{%>
+          <option value="<%- item._id %>"><%- item.name %></option>
+          <%}) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Edit to</label>
+        <input
+          name="nameUpdate"
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Entrer..."
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <h5 style="margin-top: 20px;">2. Topic</h5>
+    <!-- Add new topic -->
+    <form
+      action="/admin/menu/add/topic"
+      method="POST"
+      style="margin-top: 30px;"
+    >
+      <h5>Create New Topic</h5>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Choise Category</label>
+        <select
+          class="form-control select-custom"
+          id="exampleFormControlSelect1"
+          name="selectCategoryId"
+        >
+          <% data.forEach(item=>{%>
+          <option value="<%- item._id %>"><%- item.name %></option>
+          <%}) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Enter name topic</label>
+        <input
+          name="topicName"
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Entrer new topic..."
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <!-- /Add new topic -->
+
+    <!-- Edit topic -->
+    <form
+      action="/admin/menu/update/topic"
+      method="POST"
+      style="margin-top: 50px;"
+    >
+      <h5>Edit Topic</h5>
+      <div class="form-group">
+        <label for="list-category">Choise Category</label>
+        <select class="form-control select-custom" id="list-category">
+          <% data.forEach(item=>{%>
+          <option class="btn-opt" value="<%- item.name %>">
+            <%- item.name %>
+          </option>
+          <%}) %>
+        </select>
+      </div>
+
+      <div class="form-group" id="form-topic">
+        <label for="exampleFormControlSelect1">Choise Topic</label>
+        <select
+          class="form-control select-custom"
+          id="list-topic"
+          name="selectTopicId"
+        >
+          <!-- i use jquery for thís -->
+          <!-- <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option> -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Edit to</label>
+        <input
+          name="nameTopic"
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Entrer..."
+        />
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="customCheckDisabled1"
+          name="deleteTopic"
+          value="true"
+        />
+        <label class="custom-control-label" for="customCheckDisabled1"
+          >Delete The Topic</label
+        >
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <!-- /Edit topic -->
+  </div>
+</div>
+
+<style>
+  .select-custom {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .select-custom option:hover {
+    background-color: #555;
+    color: wheat;
+  }
+
+  .select-custom option:active {
+    background-color: tomato;
+  }
+</style>
+
+<!-- process jquey in menu page -->
+<script src="/public/process/menu.js"></script>

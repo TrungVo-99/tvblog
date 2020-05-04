@@ -1,0 +1,61 @@
+<nav class="uk-navbar-container uk-margin uk-container-expand" uk-navbar>
+  <div class="uk-navbar-left">
+    <a class="uk-navbar-item uk-logo" href="/">
+      <img
+        src="/public/images/BE.png"
+        alt="Logo"
+        uk-img
+        width="50px"
+        height="50px"
+      />
+      My-Blog
+    </a>
+
+    <ul class="uk-navbar-nav navbar">
+      <li>
+        <a href="/about-me">
+          About me!
+        </a>
+      </li>
+      <!-- <li>
+        <a href="#">
+          Top posts
+        </a>
+      </li> -->
+    </ul>
+    <!-- navbar -->
+    <ul class="uk-navbar-nav navbar" id="load-navbar"></ul>
+  </div>
+
+  <div class="uk-navbar-right">
+    <div class="uk-navbar-item uknav">
+      <form action="/?q" method="GET">
+        <input
+          class="uk-input uk-form-width-small"
+          type="text"
+          placeholder="Input"
+          style="width: 250px;"
+          name="q"
+        />
+        <button class="uk-button uk-button-default">Button</button>
+      </form>
+    </div>
+    <!--  -->
+    <ul class="uk-navbar-nav">
+      <li>
+        <a href="#">Account</a>
+        <div class="uk-navbar-dropdown">
+          <ul class="uk-nav uk-navbar-dropdown-nav">
+            <li class="uk-active">
+              <a href="/admin">Admin(tạm thời)</a>
+            </li>
+            <li><a href="/user/login">Login</a></li>
+            <li><a href="/user/logout">Logout</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script src="/public/process/navbar.js"></script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="/public/libs//uikit/uikit-3.3.3/css/uikit.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/public/WYSIWYG/froala_editor_3.1.0/css/froala_style.min.css"
+    />
+    <link rel="stylesheet" href="/public/client.css" />
+    <script src="/public/libs/uikit/uikit-3.3.3/js/uikit.min.js"></script>
+    <script src="/public/libs/uikit/uikit-3.3.3/js/uikit-icons.min.js"></script>
+    <script src="/public/libs/axios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="/public/libs/ejs.min.js"></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <%- include('client/navbar') %>
+    <div id="navbar"></div>
+    <!-- /navbar -->
+    <div
+      class="uk-container-expand uk-flex"
+      style="background-color: none; min-height: 500px;"
+    >
+      <div id="left" class="uk-width-1-5" style="background-color: darkgray;">
+        <!-- <img src="/public/images/BE.png" alt="" uk-cover style="opacity: .7;" /> -->
+        <h2>Tong hop bai viet</h2>
+      </div>
+      <div id="right" class="uk-width-4-5 uk-margin-large-left">
+        <%- include('client/'+ page) %>
+      </div>
+    </div>
+  </body>
+</html>

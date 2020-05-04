@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+
+    <!-- Compiled and minified JavaScript -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+    <link rel="stylesheet" href="/public/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/public/WYSIWYG/froala_editor_3.1.0/css/froala_editor.pkgd.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/public/WYSIWYG/froala_editor_3.1.0/css/froala_style.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="/public/WYSIWYG/froala_editor_3.1.0/js/froala_editor.pkgd.min.js"></script>
+    <!-- <script src="https://kit.fontawesome.com/yourcode.js"></script> -->
+    <script src="/public/libs/axios.js"></script>
+    <script src="/public/libs/moment.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- LAYOUT SETTING -->
+      <div id="left" class="side-bar">
+        <div id="FE-img">
+          <div id="ciclre">
+            <img
+              src="/public/images/FE.png"
+              style="height: 200px; width: 200px; border-radius: 50%;"
+              alt=""
+            />
+          </div>
+          <h1>LAYOUT SETTING</h1>
+        </div>
+        <div>
+          <ul class="submenu">
+            <li><a href="/admin/menu">CUSTOM MENU BAR</a></li>
+            <li><a href="/admin/post-management">POST MANAGEMENT</a></li>
+            <li><a href="/admin/add-post">ADD NEW THING</a></li>
+            <li>
+              <a href="/admin/decentralization">decentralization (test...)</a>
+            </li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /LAYOUT SETTING -->
+
+      <!-- DATABASE SETTING -->
+      <div id="sub-right-menu" class="side-bar-BE">
+        <div id="BE-img">
+          <div id="BE-ciclre">
+            <img
+              src="/public/images/BE.png"
+              style="height: 200px; width: 200px; border-radius: 50%;"
+              alt=""
+            />
+          </div>
+          <h1>DATABASE OPTION</h1>
+        </div>
+        <div>
+          <ul class="submenu">
+            <li><a href="/admin/menu">CUSTOM MENU BAR</a></li>
+            <li><a href="/admin/post-management">POST MANAGEMENT</a></li>
+            <li><a href="/admin/add-post">ADD NEW THING</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- /BE -->
+      <div id="right" class="content">
+        <div class="container-fulid">
+          <nav class="navbar navbar-light bg-light" id="menu-fixed">
+            <form class="form-inline">
+              <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button
+                class="btn btn-outline-success my-2 my-sm-0"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
+            <!-- <button
+              style="margin:auto; padding: 10px;"
+              type="button"
+              class="btn btn-outline-success font-italic"
+              id="momentTime"
+            >
+              real time date time
+            </button> -->
+
+            <ul class="nav justify-content-end">
+              <button
+                disabled
+                style="margin-right: 10px;"
+                class="btn btn-primary btn1"
+                type="button"
+                onclick="layoutOP()"
+              >
+                <i
+                  class="fa fa-television"
+                  aria-hidden="true"
+                  style="margin-right: 10px;"
+                ></i
+                >LAYOUT SETTING
+              </button>
+
+              <!-- <button
+                style="margin-right: 10px;"
+                class="btn btn-primary btn2 "
+                type="button"
+                onclick="databaseOP()"
+              >
+                <i
+                  class="fa fa-database"
+                  aria-hidden="true"
+                  style="margin-right: 10px;"
+                ></i
+                >DATABASE OPTION
+              </button> -->
+
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i
+                    class="fa fa-user-circle"
+                    style="font-size: 24px; padding-right: 10px;"
+                  ></i>
+                  Admin
+                </button>
+                <div
+                  class="dropdown-menu dropdown-menu-right"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <a class="dropdown-item btn-database" href="#"></a>
+                  <a class="dropdown-item" href="/admin">Admin Page</a>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    style="border-top: 1px solid rgb(180, 166, 166);"
+                  >
+                    <i
+                      class="fa fa-sign-out"
+                      style="font-size: 24px; padding-right: 10px;"
+                    ></i>
+                    Logout
+                  </a>
+                </div>
+              </div>
+            </ul>
+          </nav>
+        </div>
+
+        <div
+          class="container-fluid"
+          style="margin-top: 5%; min-height: 2000px;"
+        >
+          <%- include('admin/'+page); %>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // jquery
+    $(document).ready(() => {
+      // var interval = setInterval(() => {
+      //   $("#momentTime").html(moment().format("MMMM Do YYYY, h:mm:ss a"));
+      // }, 1000);
+    });
+
+    // JS
+    databaseOP = () => {
+      document.getElementById("sub-right-menu").style.width = "20%";
+      document.getElementById("left").style.width = "0";
+    };
+
+    layoutOP = () => {
+      document.getElementById("sub-right-menu").style.width = "0";
+      document.getElementById("left").style.width = "20%";
+    };
+
+    $(document).ready(function () {
+      $(".btn1").attr("disabled");
+      $(".btn2").click(() => {
+        $(".btn2").prop("disabled", true);
+        $(".btn1").prop("disabled", false);
+      });
+      $(".btn1").click(() => {
+        $(".btn1").prop("disabled", true);
+        $(".btn2").prop("disabled", false);
+      });
+    });
+  </script>
+</html>
+<!-- 
+<div id="sub-right-menu" class="side-bar-BE">
+  <div id="BE-img">
+    <div id="BE-ciclre">
+      <img src="/images/BE.png" style="height: 200px; width: 200px; border-radius: 50%;" alt="">
+    </div>
+    <h1>DATABASE OPTION</h1>
+  </div>
+  <div>
+    <ul class="submenu">
+      <li> <a href="/admin/menu">CUSTOM MENU BAR</a></li>
+      <li ><a href="/admin/post-management">POST MANAGEMENT</a></li>
+      <li><a href="/admin/add-post">ADD NEW THING</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </div>
+</div>          -->
